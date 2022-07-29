@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: msmanager
+  namespace: app
+  labels:
+    app: msmanager
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: msmanager
+  template:
+    metadata:
+      labels:
+        app: msmanager
+    spec:
+      containers:
+        - name: msmanager
+          image: robertpolanski/msmanager:v1
+          ports:
+            - containerPort: 8080
