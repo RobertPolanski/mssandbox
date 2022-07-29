@@ -1,7 +1,8 @@
-plugins {
+    plugins {
     id 'org.springframework.boot' version '2.7.2'
     id 'io.spring.dependency-management' version '1.0.12.RELEASE'
     id 'java'
+    id "com.palantir.docker" version "0.34.0"
 }
 
 group = 'de.instersoft.mssandbox'
@@ -19,4 +20,9 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+docker {
+    name = "${dockerUser}/calculator:${dockerVersion}"
+    copySpec.from("build/libs").into("build/libs")
 }
