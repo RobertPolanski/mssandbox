@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  msmanager:
+    build:
+      context: msmanager
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      CALCULATOR_URL: http://calculator:8081
+  calculator:
+    build:
+      context: calculator
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
