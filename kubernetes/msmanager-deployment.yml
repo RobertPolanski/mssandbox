@@ -20,3 +20,6 @@ spec:
           image: robertpolanski/msmanager:v1
           ports:
             - containerPort: 8080
+          env:
+            - name: CALCULATOR_URL
+              value: "http://calculator:8081"
