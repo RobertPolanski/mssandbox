@@ -6,7 +6,7 @@
 }
 
 group = 'de.instersoft.mssandbox'
-version = '0.0.1-SNAPSHOT'
+version = '0.1'
 sourceCompatibility = '17'
 
 repositories {
@@ -22,7 +22,14 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
+bootJar {
+    archiveName "calculator.jar" // <- this overrides the generated jar filename
+    baseName = 'calculator'
+    version =  version
+}
+
 docker {
-    name = "${dockerUser}/calculator:${dockerVersion}"
+    name = "${dockerUser}/calculator:${version}"
     copySpec.from("build/libs").into("build/libs")
+
 }
