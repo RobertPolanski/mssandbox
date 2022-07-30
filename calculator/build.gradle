@@ -23,13 +23,10 @@ tasks.named('test') {
 }
 
 bootJar {
-    archiveName "calculator.jar" // <- this overrides the generated jar filename
-    baseName = 'calculator'
-    version =  version
+    archiveName "calculator.jar"
 }
 
 docker {
     name = "${dockerUser}/calculator:${version}"
     copySpec.from("build/libs").into("build/libs")
-
 }
