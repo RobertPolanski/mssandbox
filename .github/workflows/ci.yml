@@ -24,9 +24,9 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.gradle/caches
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle.kts') }}
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: |
-            ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle.kts') }}
+            ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
             ${{ runner.os }}-gradle
 
       - name: Login to Docker Hub
@@ -37,4 +37,4 @@ jobs:
 
       - name: Build and test
         run: |
-          ./gradlew build dockerTag
+          ./gradlew build dockerPush
